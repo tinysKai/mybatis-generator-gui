@@ -4,6 +4,7 @@ import com.zzg.mybatis.generator.model.DatabaseConfig;
 import com.zzg.mybatis.generator.model.DbType;
 import com.zzg.mybatis.generator.model.GeneratorConfig;
 import com.zzg.mybatis.generator.plugins.DbRemarksCommentGenerator;
+import com.zzg.mybatis.generator.plugins.MyJavaTypeResolverDefaultImpl;
 import com.zzg.mybatis.generator.util.ConfigHelper;
 import com.zzg.mybatis.generator.util.DbUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -242,6 +243,10 @@ public class MybatisGeneratorBridge {
         }
 
         context.setTargetRuntime("MyBatis3");
+        //在指定targetRuntime下添加指定javaType即可
+        JavaTypeResolverConfiguration typeResolverConfiguration = new JavaTypeResolverConfiguration();
+        typeResolverConfiguration.setConfigurationType(MyJavaTypeResolverDefaultImpl.class.getName());
+        context.setJavaTypeResolverConfiguration(typeResolverConfiguration);
 
         List<String> warnings = new ArrayList<>();
         Set<String> fullyqualifiedTables = new HashSet<>();
