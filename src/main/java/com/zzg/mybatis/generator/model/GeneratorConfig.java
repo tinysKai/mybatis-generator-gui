@@ -66,6 +66,8 @@ public class GeneratorConfig {
 
     private boolean jsr310Support;
 
+    private boolean generateRepository;
+
     public boolean isJsr310Support() {
         return jsr310Support;
     }
@@ -201,6 +203,14 @@ public class GeneratorConfig {
     public void setNeedToStringHashcodeEquals(boolean needToStringHashcodeEquals) {
         this.needToStringHashcodeEquals = needToStringHashcodeEquals;
     }
+
+	public boolean isGenerateRepository() {
+		return generateRepository;
+	}
+
+	public void setGenerateRepository(boolean generateRepository) {
+		this.generateRepository = generateRepository;
+	}
 
 	public boolean isNeedForUpdate() {
 		return needForUpdate;

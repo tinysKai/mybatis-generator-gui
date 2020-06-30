@@ -352,6 +352,7 @@ public class MainUIController extends BaseFXController {
         generatorConfig.setUseDAOExtendStyle(useDAOExtendStyle.isSelected());
         generatorConfig.setUseSchemaPrefix(useSchemaPrefix.isSelected());
         generatorConfig.setJsr310Support(jsr310Support.isSelected());
+        generatorConfig.setGenerateRepository(true);
         return generatorConfig;
     }
 

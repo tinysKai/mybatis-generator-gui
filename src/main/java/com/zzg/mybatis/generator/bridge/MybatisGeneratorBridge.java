@@ -242,6 +242,17 @@ public class MybatisGeneratorBridge {
             }
         }
 
+        //添加自动生成Repository插件
+        if (generatorConfig.isGenerateRepository()){
+            if (DbType.MySQL.name().equals(dbType) || DbType.MySQL_8.name().equals(dbType)
+                    || DbType.PostgreSQL.name().equals(dbType)) {
+                PluginConfiguration pluginConfiguration = new PluginConfiguration();
+                pluginConfiguration.addProperty("type", "com.zzg.mybatis.generator.plugins.RepositoryDaoPlugin");
+                pluginConfiguration.setConfigurationType("com.zzg.mybatis.generator.plugins.RepositoryDaoPlugin");
+                context.addPluginConfiguration(pluginConfiguration);
+            }
+        }
+
         context.setTargetRuntime("MyBatis3");
         //在指定targetRuntime下添加指定javaType即可
         JavaTypeResolverConfiguration typeResolverConfiguration = new JavaTypeResolverConfiguration();
